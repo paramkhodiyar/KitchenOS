@@ -1,8 +1,7 @@
 import axios from "axios";
 
-// Create axios instance with base URL
 const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || "/v1",
+    baseURL: process.env.NEXT_PUBLIC_API_URL || (process.env.NODE_ENV === 'production' ? "https://kitchenos-nrxc.onrender.com/v1" : "/v1"),
     headers: {
         "Content-Type": "application/json",
     },
