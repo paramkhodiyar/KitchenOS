@@ -31,9 +31,6 @@ async function main() {
     console.log("Database cleared.");
 
     // 2. Create the specific store 'Chai Adda'
-    // Note: User asked for store code 5096, usually KOS-XXXX. We'll stick to what user likely meant or generate KOS-5096.
-    // Actually the user said "store created with 5096". Let's assume they want the code to be specifically "KOS-5096" or similar.
-    // I will use "KOS-5096" to be consistent with the app pattern.
     const storeCode = "KOS-5096";
     const storeName = "Chai Adda";
 
@@ -74,28 +71,84 @@ async function main() {
         }
     });
 
-    // 4. Products (Menu) - Relevant to Chai Adda context
+    // 4. Products (Menu) - Updated as per user request
     const productsData = [
-        { name: "Masala Chai", price: 20, stock: 100, minStock: 20 },
-        { name: "Adrak Chai", price: 25, stock: 100, minStock: 20 },
-        { name: "Elaichi Chai", price: 25, stock: 90, minStock: 15 },
-        { name: "Cutting Chai", price: 15, stock: 150, minStock: 30 },
-        { name: "Bun Maska", price: 40, stock: 40, minStock: 10 },
-        { name: "Bun Omelette", price: 60, stock: 30, minStock: 5 },
-        { name: "Vada Pav", price: 30, stock: 50, minStock: 10 },
-        { name: "Samosa", price: 20, stock: 60, minStock: 10 },
-        { name: "Samosa Pav", price: 25, stock: 50, minStock: 10 },
-        { name: "Maggie", price: 50, stock: 80, minStock: 15 },
-        { name: "Cheese Maggie", price: 70, stock: 70, minStock: 15 },
-        { name: "Veg Cheese Sandwich", price: 80, stock: 25, minStock: 5 },
-        { name: "Chicken Sandwich", price: 100, stock: 20, minStock: 5 },
-        { name: "Cold Coffee", price: 80, stock: 40, minStock: 10 },
-        { name: "Lemon Tea", price: 30, stock: 60, minStock: 10 },
-        { name: "Bread Pakora", price: 30, stock: 30, minStock: 5 },
-        { name: "Poha", price: 40, stock: 30, minStock: 5 },
-        { name: "Upma", price: 40, stock: 25, minStock: 5 },
-        { name: "Mineral Water", price: 20, stock: 100, minStock: 20 },
-        { name: "Bournvita", price: 60, stock: 40, minStock: 10 },
+        // Beverages
+        { name: "Masala Tea (150 ml)", price: 20, category: "Beverages", stock: 200, minStock: 20 },
+        { name: "Ginger Tea (150 ml)", price: 20, category: "Beverages", stock: 200, minStock: 20 },
+        { name: "Kulhad Tea (150 ml)", price: 30, category: "Beverages", stock: 150, minStock: 20 },
+        { name: "Hot Coffee (150 ml)", price: 30, category: "Beverages", stock: 100, minStock: 20 },
+        { name: "Black Hot Coffee (300 ml)", price: 50, category: "Beverages", stock: 50, minStock: 10 },
+        { name: "Cold Coffee (300 ml)", price: 60, category: "Beverages", stock: 80, minStock: 15 },
+        { name: "Cold Coffee with Ice Cream (300 ml)", price: 80, category: "Beverages", stock: 40, minStock: 10 },
+        { name: "Hot Chocolate (300 ml)", price: 70, category: "Beverages", stock: 50, minStock: 10 },
+        { name: "Cold Chocolate (300 ml)", price: 60, category: "Beverages", stock: 50, minStock: 10 },
+        { name: "Hot Bournvita (300 ml)", price: 70, category: "Beverages", stock: 40, minStock: 10 },
+        { name: "Cold Bournvita (300 ml)", price: 60, category: "Beverages", stock: 40, minStock: 10 },
+        { name: "Plain Milk (300 ml)", price: 30, category: "Beverages", stock: 50, minStock: 10 },
+        { name: "Banana Shake (300 ml)", price: 50, category: "Beverages", stock: 40, minStock: 10 },
+        { name: "Oreo Shake (300 ml)", price: 70, category: "Beverages", stock: 40, minStock: 10 },
+        { name: "Mosambi Juice (300 ml)", price: 60, category: "Beverages", stock: 60, minStock: 10 },
+        { name: "Mosambi + Pineapple (300 ml)", price: 70, category: "Beverages", stock: 50, minStock: 10 },
+        { name: "Kit-Kat Shake (300 ml)", price: 70, category: "Beverages", stock: 30, minStock: 5 },
+        { name: "Peanut Butter Shake (300 ml)", price: 99, category: "Beverages", stock: 20, minStock: 5 },
+        { name: "Mango Shake (300 ml) (Seasonal)", price: 70, category: "Beverages", stock: 0, minStock: 0 },
+        { name: "Brownie Shake (300 ml)", price: 80, category: "Beverages", stock: 30, minStock: 5 },
+
+        // Burgers & Sandwiches
+        { name: "Aloo Tikki Burger", price: 60, category: "Burgers & Sandwiches", stock: 50, minStock: 10 },
+        { name: "Paneer Burger", price: 70, category: "Burgers & Sandwiches", stock: 40, minStock: 10 },
+        { name: "Veg Burger", price: 65, category: "Burgers & Sandwiches", stock: 45, minStock: 10 },
+        { name: "Aloo Tikki Schezwan Burger", price: 70, category: "Burgers & Sandwiches", stock: 40, minStock: 10 },
+        { name: "Crispy Paneer Burger", price: 99, category: "Burgers & Sandwiches", stock: 30, minStock: 5 },
+        { name: "Aloo Tikki Sandwich", price: 65, category: "Burgers & Sandwiches", stock: 50, minStock: 10 },
+        { name: "Paneer Sandwich", price: 70, category: "Burgers & Sandwiches", stock: 40, minStock: 10 },
+        { name: "Veg Sandwich", price: 60, category: "Burgers & Sandwiches", stock: 50, minStock: 10 },
+        { name: "Aloo Tikki Paneer Sandwich", price: 90, category: "Burgers & Sandwiches", stock: 30, minStock: 5 },
+
+        // Maggi
+        { name: "Plain Maggi", price: 40, category: "Maggi", stock: 100, minStock: 20 },
+        { name: "Masala Maggi", price: 40, category: "Maggi", stock: 100, minStock: 20 },
+        { name: "Veg Maggi", price: 50, category: "Maggi", stock: 80, minStock: 15 },
+        { name: "Cheese Maggi", price: 50, category: "Maggi", stock: 80, minStock: 15 },
+        { name: "Makhni Masala Maggi", price: 60, category: "Maggi", stock: 60, minStock: 10 },
+        { name: "Chatpati Achari Maggi", price: 60, category: "Maggi", stock: 60, minStock: 10 },
+        { name: "Cheese Butter Maggi", price: 70, category: "Maggi", stock: 50, minStock: 10 },
+
+        // Wraps
+        { name: "Chilli Garlic Wrap", price: 80, category: "Wraps", stock: 40, minStock: 10 },
+        { name: "Veg Cheese Wrap", price: 90, category: "Wraps", stock: 40, minStock: 10 },
+        { name: "Crispy Paneer Wrap", price: 99, category: "Wraps", stock: 35, minStock: 10 },
+
+        // Fries & Snacks
+        { name: "Crinkle Fries", price: 90, category: "Fries & Snacks", stock: 50, minStock: 10 },
+        { name: "French Fries", price: 80, category: "Fries & Snacks", stock: 60, minStock: 10 },
+        { name: "Peri Peri Fries", price: 90, category: "Fries & Snacks", stock: 50, minStock: 10 },
+        { name: "Cheese Fries", price: 99, category: "Fries & Snacks", stock: 40, minStock: 10 },
+        { name: "Spring Roll (6 pcs)", price: 80, category: "Fries & Snacks", stock: 40, minStock: 10 },
+        { name: "Veggie Fingers (6 pcs)", price: 80, category: "Fries & Snacks", stock: 40, minStock: 10 },
+        { name: "Smiley Fries (6 pcs)", price: 80, category: "Fries & Snacks", stock: 40, minStock: 10 },
+        { name: "Chilli Garlic Potatoes (15 pcs)", price: 80, category: "Fries & Snacks", stock: 30, minStock: 5 },
+        { name: "Pizza Pockets (5 pcs)", price: 90, category: "Fries & Snacks", stock: 30, minStock: 5 },
+        { name: "Cheese Nuggets (8 pcs)", price: 90, category: "Fries & Snacks", stock: 30, minStock: 5 },
+        { name: "Veg Fried Momo (8 pcs)", price: 80, category: "Fries & Snacks", stock: 50, minStock: 10 },
+        { name: "Cheese Corn Momo (8 pcs)", price: 90, category: "Fries & Snacks", stock: 40, minStock: 10 },
+        { name: "Veg Kurkure Momo", price: 99, category: "Fries & Snacks", stock: 40, minStock: 10 },
+        { name: "Paneer Momo (8 pcs)", price: 99, category: "Fries & Snacks", stock: 40, minStock: 10 },
+        { name: "Onion Rings (8 pcs)", price: 99, category: "Fries & Snacks", stock: 30, minStock: 5 },
+        { name: "Extra Dip", price: 10, category: "Fries & Snacks", stock: 100, minStock: 20 },
+
+        // Packaged Food & Drink (10 items)
+        { name: "Lays Classic Salted", price: 20, category: "Packaged", stock: 50, minStock: 10 },
+        { name: "Lays Magic Masala", price: 20, category: "Packaged", stock: 50, minStock: 10 },
+        { name: "Kurkure Masala Munch", price: 20, category: "Packaged", stock: 50, minStock: 10 },
+        { name: "Doritos Nacho Cheese", price: 30, category: "Packaged", stock: 30, minStock: 5 },
+        { name: "Good Day Butter Cookies", price: 20, category: "Packaged", stock: 40, minStock: 10 },
+        { name: "Oreo Biscuit Pack", price: 30, category: "Packaged", stock: 40, minStock: 10 },
+        { name: "Dark Fantasy Choco Fills", price: 30, category: "Packaged", stock: 40, minStock: 10 },
+        { name: "Coca Cola (500ml)", price: 40, category: "Packaged", stock: 40, minStock: 10 },
+        { name: "Thums Up (500ml)", price: 40, category: "Packaged", stock: 40, minStock: 10 },
+        { name: "Sting Energy Drink", price: 20, category: "Packaged", stock: 60, minStock: 10 },
     ];
 
     const products = [];
@@ -107,22 +160,53 @@ async function main() {
     }
     console.log(`Created ${products.length} products`);
 
-    // 5. Raw Materials - Some OUT/LOW as requested
+    // 5. Raw Materials - Updated for new menu
     const rawMaterialsData = [
-        { name: "Tea Powder", status: "AVAILABLE" },
-        { name: "Fresh Milk", status: "AVAILABLE" },
+        { name: "Masala Tea Powder", status: "AVAILABLE" },
         { name: "Sugar", status: "AVAILABLE" },
-        { name: "Ginger", status: "LOW" }, // LOW
-        { name: "Cardamom", status: "AVAILABLE" },
-        { name: "Vada Pav Buns", status: "AVAILABLE" },
-        { name: "Bread Loaves", status: "AVAILABLE" },
-        { name: "Potatoes", status: "AVAILABLE" },
-        { name: "Onions", status: "AVAILABLE" },
+        { name: "Milk", status: "AVAILABLE" },
+        { name: "Ginger", status: "LOW" },
+        { name: "Coffee Powder", status: "AVAILABLE" },
+        { name: "Chocolate Syrup", status: "AVAILABLE" },
+        { name: "Ice Cream Brick", status: "AVAILABLE" },
+        { name: "Bournvita Powder", status: "AVAILABLE" },
+        { name: "Bananas", status: "AVAILABLE" },
+        { name: "Oreo Packets (Large)", status: "AVAILABLE" },
+        { name: "Mosambi", status: "AVAILABLE" },
+        { name: "Pineapple", status: "AVAILABLE" },
+        { name: "KitKat Bars", status: "AVAILABLE" },
+        { name: "Peanut Butter", status: "AVAILABLE" },
+        { name: "Mango Pulp (Frozen)", status: "OUT" },
+        { name: "Brownies", status: "AVAILABLE" },
+        { name: "Burger Buns", status: "AVAILABLE" },
+        { name: "Aloo Tikki (Frozen)", status: "AVAILABLE" },
+        { name: "Paneer Block", status: "LOW" },
+        { name: "Veg Burger Patty", status: "AVAILABLE" },
+        { name: "Schezwan Sauce", status: "AVAILABLE" },
+        { name: "Sandwich Bread (Large)", status: "AVAILABLE" },
+        { name: "Maggi Noodles Block", status: "AVAILABLE" },
+        { name: "Cheese Cubes/Slices", status: "LOW" },
+        { name: "Makhni Gravy Base", status: "AVAILABLE" },
+        { name: "Achari Paste", status: "AVAILABLE" },
         { name: "Butter", status: "AVAILABLE" },
-        { name: "Cheese Slices", status: "OUT" }, // OUT
-        { name: "Eggs", status: "AVAILABLE" },
-        { name: "Maggie Packs", status: "AVAILABLE" },
-        { name: "Disposable Cups", status: "LOW" }, // LOW
+        { name: "Tortilla Wraps", status: "AVAILABLE" },
+        { name: "Garlic Sauce", status: "AVAILABLE" },
+        { name: "Frozen French Fries", status: "AVAILABLE" },
+        { name: "Crinkle Cut Fries", status: "AVAILABLE" },
+        { name: "Peri Peri Masala", status: "AVAILABLE" },
+        { name: "Frozen Spring Rolls", status: "AVAILABLE" },
+        { name: "Veggie Fingers", status: "AVAILABLE" },
+        { name: "Smiley Fries", status: "AVAILABLE" },
+        { name: "Potato Shots/Chilli Garlic", status: "AVAILABLE" },
+        { name: "Pizza Pockets", status: "AVAILABLE" },
+        { name: "Frozen Nuggets", status: "AVAILABLE" },
+        { name: "Frozen Momos (Veg)", status: "AVAILABLE" },
+        { name: "Frozen Momos (Paneer)", status: "AVAILABLE" },
+        { name: "Corn", status: "AVAILABLE" },
+        { name: "Onion Rings", status: "AVAILABLE" },
+        { name: "Oil (Liters)", status: "AVAILABLE" },
+        { name: "Disposable Cups", status: "LOW" },
+        { name: "Packaging Boxes", status: "AVAILABLE" },
         { name: "Tissues", status: "AVAILABLE" },
     ];
 

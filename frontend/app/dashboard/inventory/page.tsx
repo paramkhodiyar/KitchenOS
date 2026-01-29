@@ -19,6 +19,8 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function InventoryPage() {
     const [materials, setMaterials] = useState<RawMaterial[]>([]);
     const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
 
     // Modal States
     const [isAddOpen, setIsAddOpen] = useState(false);
@@ -120,7 +122,7 @@ export default function InventoryPage() {
                 </div>
             ) : (
                 <div className="grid gap-3">
-                    {materials.map((material) => (
+                    {materials.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((material) => (
                         <motion.div
                             layout
                             initial={{ opacity: 0, y: 10 }}
@@ -181,6 +183,29 @@ export default function InventoryPage() {
                             </div>
                         </motion.div>
                     ))}
+
+                    {/* Pagination Controls */}
+                    {materials.length > itemsPerPage && (
+                        <div className="flex justify-center items-center gap-4 mt-8">
+                            <Button
+                                variant="outline"
+                                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                                disabled={currentPage === 1}
+                            >
+                                Previous
+                            </Button>
+                            <span className="text-sm font-medium">
+                                Page {currentPage} of {Math.ceil(materials.length / itemsPerPage)}
+                            </span>
+                            <Button
+                                variant="outline"
+                                onClick={() => setCurrentPage(p => Math.min(Math.ceil(materials.length / itemsPerPage), p + 1))}
+                                disabled={currentPage >= Math.ceil(materials.length / itemsPerPage)}
+                            >
+                                Next
+                            </Button>
+                        </div>
+                    )}
                 </div>
             )}
 

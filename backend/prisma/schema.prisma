@@ -50,6 +50,7 @@ model Product {
   stock        Int
   minStock     Int
   isActive     Boolean       @default(true)
+  category     String?
   store        Store         @relation(fields: [storeId], references: [id])
   stockLogs    StockLog[]
   orderItems   OrderItem[]

@@ -40,7 +40,7 @@ export function PinPad({ onPress, onDelete, onSubmit, isLoading, length }: PinPa
                             key={digit}
                             variant="secondary"
                             size="xl"
-                            className="h-20 w-full rounded-2xl text-3xl font-medium shadow-sm active:scale-95 transition-all"
+                            className="h-20 w-full rounded-2xl text-3xl font-medium shadow-sm border border-black/10 active:scale-95 transition-all"
                             onClick={() => onPress(digit)}
                             disabled={isLoading}
                         >

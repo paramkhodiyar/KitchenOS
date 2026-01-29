@@ -228,8 +228,9 @@ export default function ProductsPage() {
                                             <label className="text-sm font-medium mb-1 block">Price (₹)</label>
                                             <Input
                                                 type="number"
-                                                value={currentItem.price}
-                                                onChange={e => setCurrentItem(prev => ({ ...prev, price: Number(e.target.value) }))}
+                                                min="0"
+                                                value={currentItem.price?.toString().replace(/^0+/, '')}
+                                                onChange={e => setCurrentItem(prev => ({ ...prev, price: e.target.value === '' ? 0 : Number(e.target.value) }))}
                                             />
                                         </div>
                                         <div className="grid grid-cols-2 gap-4">
@@ -237,16 +238,18 @@ export default function ProductsPage() {
                                                 <label className="text-sm font-medium mb-1 block">Stock</label>
                                                 <Input
                                                     type="number"
-                                                    value={currentItem.stock}
-                                                    onChange={e => setCurrentItem(prev => ({ ...prev, stock: Number(e.target.value) }))}
+                                                    min="0"
+                                                    value={currentItem.stock?.toString()}
+                                                    onChange={e => setCurrentItem(prev => ({ ...prev, stock: e.target.value === '' ? 0 : Number(e.target.value) }))}
                                                 />
                                             </div>
                                             <div>
                                                 <label className="text-sm font-medium mb-1 block">Min Limit</label>
                                                 <Input
                                                     type="number"
-                                                    value={currentItem.minStock}
-                                                    onChange={e => setCurrentItem(prev => ({ ...prev, minStock: Number(e.target.value) }))}
+                                                    min="0"
+                                                    value={currentItem.minStock?.toString()}
+                                                    onChange={e => setCurrentItem(prev => ({ ...prev, minStock: e.target.value === '' ? 0 : Number(e.target.value) }))}
                                                 />
                                             </div>
                                         </div>
