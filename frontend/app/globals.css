@@ -38,44 +38,6 @@
     --ring: #292524;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0C0A09;
-        /* Stone 950 */
-        --foreground: #F5F5F4;
-        /* Stone 100 */
-
-        --card: #1C1917;
-        /* Stone 900 */
-        --card-foreground: #F5F5F4;
-
-        --popover: #1C1917;
-        --popover-foreground: #F5F5F4;
-
-        --primary: #F5F5F4;
-        /* Stone 100 */
-        --primary-foreground: #1C1917;
-        /* Stone 900 */
-
-        --secondary: #292524;
-        /* Stone 800 */
-        --secondary-foreground: #F5F5F4;
-
-        --muted: #292524;
-        --muted-foreground: #A8A29E;
-        /* Stone 400 */
-
-        --accent: #292524;
-        --accent-foreground: #F5F5F4;
-
-        --destructive: #7F1D1D;
-        --destructive-foreground: #FEF2F2;
-
-        --border: #292524;
-        --input: #292524;
-        --ring: #D6D3D1;
-    }
-}
 
 body {
     background-color: var(--background);

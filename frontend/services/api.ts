@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create axios instance with base URL
 const api = axios.create({
-    baseURL: "/v1", // Proxy in next.config or direct URL
+    baseURL: process.env.NEXT_PUBLIC_API_URL || "/v1",
     headers: {
         "Content-Type": "application/json",
     },
