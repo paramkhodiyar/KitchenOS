@@ -162,4 +162,4 @@ The backend exposes a JSON REST API. All protected endpoints require a valid Bea
    node src/scripts/seed-demo.js
    ```
 
-The application should now be running with Frontend on `http://localhost:3000` and Backend on `http://localhost:4040`.
+The application should now be running with Frontend on `https://kitchen-os-seven.vercel.app` and Backend on `https://kitchenos-nrxc.onrender.com`.
