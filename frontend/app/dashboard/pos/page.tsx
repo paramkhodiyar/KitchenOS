@@ -20,6 +20,8 @@ export default function POSPage() {
 
     const { items, addItem, updateQuantity, total } = useCartStore();
 
+    const [activeCategory, setActiveCategory] = useState("All");
+
     useEffect(() => {
         loadProducts();
     }, []);
@@ -36,7 +38,13 @@ export default function POSPage() {
         }
     };
 
-    const filtered = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
+    const categories = ["All", ...Array.from(new Set(products.map((p) => p.category).filter(Boolean)))];
+
+    const filtered = products.filter((p) => {
+        const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase());
+        const matchesCategory = activeCategory === "All" || p.category === activeCategory;
+        return matchesSearch && matchesCategory;
+    });
 
     const cartTotal = total();
     const cartCount = items.reduce((a, b) => a + b.quantity, 0);
@@ -44,15 +52,33 @@ export default function POSPage() {
     return (
         <div className="space-y-6 pb-24">
             {/* Search Bar */}
-            <div className="sticky top-0 bg-background pt-2 z-10">
-                <div className="relative">
-                    <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+            <div className="sticky top-0 bg-background pt-2 z-10 pb-4 -mx-6 px-6">
+                <div className="relative mb-4">
+                    <Search className="absolute left-3 top-4 h-4 w-4 text-muted-foreground" />
                     <Input
                         placeholder="Search products..."
                         className="pl-9 h-12 text-lg rounded-xl shadow-sm bg-card"
                         value={search}
-                        onChange={e => setSearch(e.target.value)}
+                        onChange={(e) => setSearch(e.target.value)}
                     />
+                </div>
+
+                {/* Category Filters */}
+                <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar -mx-2 px-2">
+                    {categories.map((cat) => (
+                        <button
+                            key={cat as string}
+                            onClick={() => setActiveCategory(cat as string)}
+                            className={cn(
+                                "flex-none px-4 py-2 rounded-full text-sm font-medium transition-all",
+                                activeCategory === cat
+                                    ? "bg-primary text-primary-foreground shadow-md scale-105"
+                                    : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground border"
+                            )}
+                        >
+                            {cat}
+                        </button>
+                    ))}
                 </div>
             </div>
 

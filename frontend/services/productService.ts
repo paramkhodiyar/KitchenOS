@@ -7,6 +7,7 @@ export interface Product {
     stock: number;
     minStock: number;
     isActive: boolean;
+    category?: string;
 }
 
 export const getProducts = async () => {
