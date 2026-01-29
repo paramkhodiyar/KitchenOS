@@ -75,7 +75,7 @@ The backend exposes a JSON REST API. All protected endpoints require a valid Bea
 ### Authentication (`/v1/auth`)
 
 | Method | Endpoint | Description | Access |
-|sd|---|---|---|
+|---|---|---|---|
 | POST | `/setup` | Initialize a new store with owner details | Public |
 | POST | `/check` | Check if a store code exists | Public |
 | POST | `/unlock` | Authenticate user via PIN and Role | Public |
