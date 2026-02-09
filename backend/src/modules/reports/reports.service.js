@@ -1,8 +1,5 @@
 import prisma from "../../config/prisma.js";
 
-/**
- * Revenue report
- */
 const getRevenueReport = async ({ storeId, from, to }) => {
     const where = {
         storeId,
@@ -29,11 +26,7 @@ const getRevenueReport = async ({ storeId, from, to }) => {
     });
 
     return {
-        totalRevenue: (income._sum.amount || 0) + (expense._sum.amount || 0), // Gross revenue if expense is negative? Usually "revenue" is income.
-        // Actually, usually Total Revenue = Total Income.
-        // User asked for "Total Revenue". In accounting, Revenue is just Income.
-        // The previous code returned 'net' but frontend looked for 'totalRevenue' which wasn't mapped.
-        // Let's map 'totalRevenue' to totalIncome.
+        totalRevenue: (income._sum.amount || 0) + (expense._sum.amount || 0),
         totalRevenue: income._sum.amount || 0,
         totalIncome: income._sum.amount || 0,
         totalExpense: expense._sum.amount || 0,
@@ -44,11 +37,7 @@ const getRevenueReport = async ({ storeId, from, to }) => {
 };
 
 const getDailyRevenue = async (storeId, from, to) => {
-    // Group by day. Prisma doesn't support Date_Trunc comfortably in all DBs without raw query.
-    // For simplicity, fetch all and aggregate in JS (assuming not massive scale for this prototype)
-    // Or use groupBy if using recent Prisma.
 
-    // Fallback: Fetch all transactions
     const txs = await prisma.transaction.findMany({
         where: {
             storeId,
@@ -67,9 +56,6 @@ const getDailyRevenue = async (storeId, from, to) => {
     return Object.entries(map).map(([date, revenue]) => ({ date, revenue })).sort((a, b) => a.date.localeCompare(b.date));
 }
 
-/**
- * Order report
- */
 const getOrderReport = async ({ storeId, from, to }) => {
     const orders = await prisma.order.findMany({
         where: {
@@ -98,13 +84,13 @@ const getOrderReport = async ({ storeId, from, to }) => {
     const dateMap = {};
 
     orders.forEach(order => {
-        // Top Items
+
         order.items.forEach(item => {
             itemMap[item.productId] =
                 (itemMap[item.productId] || 0) + item.quantity;
         });
 
-        // Daily Trend
+
         const date = order.createdAt.toISOString().split('T')[0];
         dateMap[date] = (dateMap[date] || 0) + 1;
     });
@@ -123,32 +109,29 @@ const getOrderReport = async ({ storeId, from, to }) => {
     };
 };
 
-/**
- * Stock report
- */
 const getStockReport = async ({ storeId }) => {
     const rawMaterials = await prisma.rawMaterial.findMany({
         where: { storeId },
     });
 
     const products = await prisma.product.findMany({
-        where: { storeId, isActive: true }, // Only check active products
+        where: { storeId, isActive: true },
     });
 
     const items = [];
 
-    // Add Raw Materials
+
     rawMaterials.forEach(rm => {
         items.push({
             id: rm.id,
             name: rm.name,
-            stock: null, // No numeric stock tracking for Raw Materials
+            stock: null,
             status: rm.status,
             type: 'RAW_MATERIAL'
         });
     });
 
-    // Add Products to items if low/out
+
     products.forEach(p => {
         let status = 'AVAILABLE';
         if (p.stock <= 0) status = 'OUT';
@@ -163,7 +146,6 @@ const getStockReport = async ({ storeId }) => {
         });
     });
 
-    // Calculate metadata
     const lowStockItems = items.filter(i => i.status === 'LOW').length;
     const outOfStockItems = items.filter(i => i.status === 'OUT').length;
 

@@ -14,7 +14,7 @@ export const authenticate = (req, res, next) => {
         req.context = {
             storeId: decoded.storeId,
             role: decoded.role,
-            userId: decoded.userId, // Optional, might be present for some tokens
+            userId: decoded.userId
         };
 
         next();

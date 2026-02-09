@@ -9,8 +9,6 @@ import { authenticate } from "./middleware/auth.middleware.js";
 
 export default (app) => {
     app.use("/v1/auth", authRoutes);
-
-    // Protected routes
     app.use("/v1/orders", authenticate, ordersRoutes);
     app.use("/v1/inventory", authenticate, inventoryRoutes);
     app.use("/v1/products", authenticate, productsRoutes);

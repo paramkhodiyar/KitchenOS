@@ -12,7 +12,6 @@ export const validate = (schema) => (req, res, next) => {
         next();
     } catch (error) {
         if (error.errors) {
-            // Zod error format
             const message = error.errors.map(e => `${e.path.join('.')}: ${e.message}`).join(', ');
             next({ status: 400, message });
         } else {

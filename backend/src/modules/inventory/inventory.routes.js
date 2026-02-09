@@ -10,8 +10,8 @@ import {
 const router = Router();
 
 router.post("/raw-material", createRawMaterial);
-router.patch("/raw-material/:id/status", updateRawMaterialStatus); // Prefer specific endpoint for status
-router.put("/raw-material/:id", updateRawMaterialStatus); // Keep for backward compatibility if needed, OR replace. Let's keep existing logic but add new ones.
+router.patch("/raw-material/:id/status", updateRawMaterialStatus);
+router.put("/raw-material/:id", updateRawMaterialStatus);
 router.patch("/raw-material/:id", updateRawMaterial);
 router.delete("/raw-material/:id", deleteRawMaterial);
 router.get("/raw-material", getRawMaterials);

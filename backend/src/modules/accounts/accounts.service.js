@@ -16,8 +16,6 @@ const recordOrderIncome = async ({
         throw { status: 404, message: "Order not found" };
     }
 
-    // Allow payment for any order status
-    // if (order.status !== "COMPLETED") { ... }
 
     const existing = await prisma.transaction.findUnique({
         where: { orderId },

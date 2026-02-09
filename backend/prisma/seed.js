@@ -5,8 +5,6 @@ const prisma = new PrismaClient();
 
 async function main() {
     console.log("Starting seed for Chai Adda...");
-
-    // 1. Cleanup: Delete EVERYTHING - STRICT ORDER
     console.log("Cleaning up invalid data...");
 
     // Child tables must be deleted before Parent tables

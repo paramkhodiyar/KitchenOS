@@ -8,11 +8,11 @@ const parseDates = (req) => {
 
     const from = req.query.from
         ? new Date(req.query.from)
-        : lastWeek; // Default to last 7 days
+        : lastWeek; 
 
     const to = req.query.to
         ? new Date(req.query.to)
-        : new Date(); // Default to now
+        : new Date();
 
     return { from, to };
 };
