@@ -1,6 +1,6 @@
 # KitchenOS
 
-KitchenOS is a comprehensive, full-stack Point of Sale (POS) and Kitchen Management System designed for cafes and restaurants. It streamlines operations by integrating order taking, kitchen display, inventory management, and analytics into a single, cohesive platform.
+KitchenOS is a comprehensive, full-stack Point of Sale (POS) and Kitchen Management System designed for cafes and restaurants. It streamlines operations by integrating order taking, kitchen display, inventory management, and analytics into a single, dynamic platform.
 
 ## Features
 
