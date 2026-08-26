@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Light Warm Cream Background (#FDFBF7 - KitchenOS Web Theme) -->
+  <rect width="1024" height="1024" rx="224" fill="#FDFBF7"/>
+  
+  <!-- Subtle Border Stroke (#E7E5E4) -->
+  <rect x="16" y="16" width="992" height="992" rx="208" fill="none" stroke="#E7E5E4" stroke-width="16"/>
+  
+  <!-- Center Primary Emblem Container (#292524 - Dark Stone 800) -->
+  <rect x="220" y="220" width="584" height="584" rx="148" fill="#292524"/>
+  
+  <!-- Official Lucide ChefHat Vector Icon in Light Cream (#F5F5F4) -->
+  <g transform="translate(312, 312) scale(16.666)" fill="none" stroke="#F5F5F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6z"/>
+    <line x1="6" y1="17" x2="18" y2="17"/>
+  </g>
+</svg>

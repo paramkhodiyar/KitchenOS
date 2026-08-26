@@ -1,5 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
+import path from "path";
+import { config } from "dotenv";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+config({ path: path.join(__dirname, "../.env") });
 
 const prisma = new PrismaClient();
 

@@ -66,6 +66,13 @@ KitchenOS is built as a monorepo containing both the client and server applicati
 - **Authentication**: JWT (JSON Web Tokens) & Bcrypt for PIN hashing.
 - **Logging**: Custom middleware for request/error logging.
 
+**Mobile (Flutter WebView App)**
+- **Framework**: Flutter (Dart)
+- **WebView Controller**: `webview_flutter` with native gesture back navigation & exit confirmation.
+- **Brand Aesthetic**: Light warm stone theme (`#FDFBF7`, `#292524`), official ChefHat launcher icon & app header emblem.
+- **Server Switching**: Dynamic target URL selector (`https://kitchen-os-seven.vercel.app/` vs custom local network IP).
+- **Services Hook**: Ready for push notifications (`NotificationService`).
+
 ---
 
 ## API Endpoints
